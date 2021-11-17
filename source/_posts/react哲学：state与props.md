@@ -1,6 +1,6 @@
 ---
 
-title: react哲学之state与props
+title: react哲学：state与props
 tags: 
   - React
 date: 2021-06-30 
