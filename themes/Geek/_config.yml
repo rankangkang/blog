@@ -1,0 +1,29 @@
+logo_title: cmkk 请叫我康康
+
+style: black
+
+favicon: /k.svg
+
+menu:
+  作品: /works
+  # 域名: /domain
+  友联: /links
+  关于: /about
+  待办: /todos
+  Github: https://github.com/cmkangkang
+
+footer:
+  copyright: cmkk
+  url: https://cmkangkang.github.io/
+  icp: 黔ICP备2021005921号-1
+  domain: https://beian.miit.gov.cn
+
+# 做了域名限制，请改成自己的 KEY
+# 若关闭valine 设置enable为false
+valine:
+  enable: false
+  appId: CmCti21ooOOIzFOhEyFkFvR0-gzGzoHsz
+  appKey: FqiyUqbg7McKN2eG0MCewupf
+
+highlight:
+  enable: false
