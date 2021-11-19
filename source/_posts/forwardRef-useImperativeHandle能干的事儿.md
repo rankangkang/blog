@@ -1,8 +1,9 @@
 ---
 title: forwardRef+useImperativeHandle能干的事儿
 date: 2021-11-17 22:31:21
-tags: react
-  hooks
+tags: 
+  - react
+  - hooks
 ---
 
 ## 前言
