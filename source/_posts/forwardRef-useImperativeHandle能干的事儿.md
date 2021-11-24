@@ -93,14 +93,12 @@ import React, {
   useImperativeHandle,
   memo,
   CSSProperties,
+  useCallback
 } from 'react'
 import Quill, { QuillOptionsStatic } from 'quill'
 
-const id = 'editor-' + new Date().valueOf()
-let editor: Quill
-
 interface Props {
-  initialText?: string
+  defaultValue?: string
   onChange: (content: string, textLength?: number, imgLength?: number) => void
   placeholder?: string
   uploadImage?: (
@@ -110,102 +108,106 @@ interface Props {
   style?: CSSProperties
 }
 
-const QuillEditor = memo(
-  ({
-    initialText,
-    onChange,
-    placeholder,
-    uploadImage,
-    editorOptions,
-    style,
-    onRef,
-  }: Props & { onRef: ForwardedRef<any> }) => {
-    const editorRef = useRef<HTMLDivElement>(null)
-    const fileRef = useRef<HTMLInputElement>(null)
-    useEffect(() => {
-      let node = editorRef.current as Element
-      const options: QuillOptionsStatic = {
-        modules: {
-          toolbar: false,
-        },
-        theme: 'snow',
-        placeholder: placeholder || '请输入',
-      }
-      editor = new Quill(node || '#' + id, {
-        ...options,
-        ...editorOptions,
-      })
-      !!initialText && editor.setText(initialText)
-      editor.clipboard.addMatcher(Node.ELEMENT_NODE, (node, delta) => {
-        const ops: any[] = []
-        delta.ops.forEach((op) => {
-          if (op.insert && typeof op.insert === 'string') {
-            ops.push({
-              insert: op.insert,
-            })
-          }
-        })
-        delta.ops = ops
-        return delta
-      })
-    }, [editorOptions, placeholder])
-    useEffect(() => {
-      const handleTextChange = () => {
-        const text = editor.getText().replace(/\s/g, '')
-        const imgs = editor.root.querySelectorAll('img')
-        const content = editor.root.innerHTML
-        onChange(content, text.length, imgs.length)
-      }
-      editor.on('text-change', handleTextChange)
-      return () => {
-        editor.off('text-change', handleTextChange)
-      }
-    }, [onChange])
+export interface EditorRef {
+  upload: () => void
+}
 
-    const insertImage = (url: string) => {
-      const selection = editor.getSelection()
-      const index = selection ? selection.index : editor.getLength()
-      editor.insertEmbed(index, 'image', url)
-    }
+export interface EditorOptions extends QuillOptionsStatic {}
 
-    const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0]
-      const re = await (uploadImage as Function)(file as File)
-      if (re?.url) {
-        insertImage(re.url)
-      }
-      e.target && (e.target.value = '')
-    }
-
-    useImperativeHandle(onRef, () => ({
-      onUpload: () => {
-        fileRef.current?.click()
+const Editor = memo(({
+  defaultValue,
+  onChange,
+  placeholder,
+  uploadImage,
+  editorOptions,
+  style,
+  onRef
+}: Props & {onRef: ForwardedRef<EditorRef>}) => {
+  const quillRef = useRef<Quill>(null) as React.MutableRefObject<Quill>
+  const editorRef = useRef<HTMLDivElement>(null)
+  const fileRef = useRef<HTMLInputElement>(null)
+  useEffect(() => {
+    let node = editorRef.current as Element;
+    const options: QuillOptionsStatic = {
+      modules: {
+        toolbar: false
       },
-    }))
+      theme: 'snow',
+      placeholder: placeholder || '请输入'
+    }
+    quillRef.current = new Quill(node, {
+      ...options,
+      ...editorOptions
+    })
+    !!defaultValue && quillRef.current.setText(defaultValue)
+    quillRef.current.clipboard.addMatcher(Node.ELEMENT_NODE, (node, delta) => {
+      const ops: any[] = []
+      delta.ops.forEach(op => {
+        if (op.insert && typeof op.insert === 'string') {
+          ops.push({
+            insert: op.insert
+          })
+        }
+      })
+      delta.ops = ops
+      return delta
+    })
+  }, [editorOptions, placeholder])
 
-    return (
-      <div className={'my-quill'}>
-        <div
-          className={'my-quill_editor'}
-          id={id}
-          ref={editorRef}
-          style={{ ...style }}
-        ></div>
-        <input
-          className={'my-quill_upload'}
-          type="file"
-          ref={fileRef}
-          accept="image/jpeg,image/jpg,image/png,image/gif"
-          multiple={false}
-          onChange={handleFileChange}
-          disabled={!!!uploadImage}
-        />
-      </div>
-    )
+  useEffect(() => {
+    if(!quillRef.current) return
+    const handleTextChange = () => {
+      const text = quillRef.current.getText().replace(/\s/g, '')
+      const imgs = quillRef.current.root.querySelectorAll('img')
+      const content = quillRef.current.root.innerHTML
+      onChange(content, text.length, imgs.length)
+    }
+    quillRef.current.on('text-change', handleTextChange)
+    return () => {
+      quillRef.current.off('text-change', handleTextChange)
+    }
+  }, [onChange])
+
+  const insertImage = useCallback((url: string) => {
+    const selection = quillRef.current.getSelection()
+    const index = selection ? selection.index : quillRef.current.getLength()
+    quillRef.current.insertEmbed(index, 'image', url)
+  }, [quillRef.current])
+
+  const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    const re = await (uploadImage as Function)(file as File)
+    if (re?.url) {
+      insertImage(re.url)
+    }
+    e.target && (e.target.value = '')
   }
-)
 
-export default forwardRef((props: Props, ref) => (
-  <QuillEditor {...props} onRef={ref} />
-))
+  useImperativeHandle(onRef, () => ({
+    upload: () => {
+      fileRef.current?.click()
+    }
+  }))
+
+  return (
+    <div className={'my-quill'}>
+      <div
+        className={'my-quill_editor'}
+        ref={editorRef}
+        style={{ ...style }}
+      ></div>
+      <input
+        className={'my-quill_upload'}
+        type="file"
+        ref={fileRef}
+        accept="image/jpeg,image/jpg,image/png,image/gif"
+        multiple={false}
+        onChange={handleFileChange}
+        disabled={!!!uploadImage}
+      />
+    </div>
+  )
+})
+
+export default forwardRef((props: Props, ref: ForwardedRef<EditorRef>) => <Editor {...props} onRef={ref} />)
 ```
