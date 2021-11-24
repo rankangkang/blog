@@ -10,8 +10,8 @@
         <%- page.content %>
     </div>
 
-    <% if (theme.valine.enable && page.comments) { %>
+    <% if (theme.gitalk.enable) { %>
         <hr class="fhr">
-        <div id="vcomments"></div>
+        <div id="gitalk-container"></div>
     <% } %>
 </div>
