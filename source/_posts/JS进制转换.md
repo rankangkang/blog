@@ -1,10 +1,8 @@
 ---
 title: JS进制转换
 tags: 
-  - JS基础
-  - JS算法
+  - js
 date: 2021-06-30
-categories: JS
 ---
 
 

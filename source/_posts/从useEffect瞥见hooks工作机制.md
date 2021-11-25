@@ -11,13 +11,13 @@ tags:
 
 这很好，但是在当我使用`useEffect`时，总觉得有点不得劲儿，总觉得有些地方很迷惑，比如：
 
-* 如何使用`useEffect`模拟`componentDidMount`生命周期？🤔
-* 如何优雅地在`useEffect`内请求数据呢？为什么有时候会出现无限请求的情况？🤔
-* 我有必要把所有在effect里用到的数据加到依赖么？🤔
-* 我应该把函数当作`useEffect`依赖么？🤔
-* 为什么有时候在`useEffect`里拿到了旧的数据？(明我刚刚`setXxx`)🤔
-* `useEffect`和`useLayuoutEffect`的相比浏览器渲染的确切执行时机到底是什么？🤔
-* effect在什么时间点清理？🤔
+* 如何使用`useEffect`模拟`componentDidMount`生命周期？**🤔**
+* 如何优雅地在`useEffect`内请求数据呢？为什么有时候会出现无限请求的情况？**🤔**
+* 我有必要把所有在effect里用到的数据加到依赖么？**🤔**
+* 我应该把函数当作`useEffect`依赖么？**🤔**
+* 为什么有时候在`useEffect`里拿到了旧的数据？(明我刚刚`setXxx`)**🤔**
+* `useEffect`和`useLayuoutEffect`的相比浏览器渲染的确切执行时机到底是什么？**🤔**
+* effect在什么时间点清理？**🤔**
 * ...
 
 在很长的一段时间内，我深受以上问题的困扰。在我阅读Dan的[useEffect 完整指南](https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/)后，我不禁惊呼”索嘚斯内~“。
@@ -459,7 +459,7 @@ React会记住你提供的effect函数，并且会在deps改变且更改作用�
 
 
 
-### 🤔如何使用`useEffect`模拟`componentDidMount`生命周期？
+### **🤔**如何使用`useEffect`模拟`componentDidMount`生命周期？
 
 你可能已经在很多其他的博客了解到可以使用`useEffect(fn, [])`，但是它们却并不完全相等。
 
@@ -471,7 +471,7 @@ React会记住你提供的effect函数，并且会在deps改变且更改作用�
 
 
 
-### 🤔如何优雅地在`useEffect`内请求数据呢？
+### **🤔**如何优雅地在`useEffect`内请求数据呢？
 
 我们知道`useEffect`不能接受异步方法，这也就意味着直接在`useEffect`内使用`async/await`语法是不可行的。
 
@@ -496,7 +496,7 @@ useEffect(() => {
 
 
 
-### 🤔为什么有时候会出现无限请求的情况？
+### **🤔**为什么有时候会出现无限请求的情况？
 
 这个通常发生于下列情况：
 
@@ -536,7 +536,7 @@ useEffect(() => {
 
 
 
-### 🤔我有必要把所有在effect里用到的数据加到依赖么？
+### **🤔**我有必要把所有在effect里用到的数据加到依赖么？
 
 推荐将你使用的依赖添加到effect的依赖数组里。
 
@@ -661,7 +661,7 @@ useEffect(() => {
 
 ---
 
-### 🤔我应该把函数当作`useEffect`依赖么？
+### **🤔**我应该把函数当作`useEffect`依赖么？
 
 一个典型的误解是认为函数不应该成为依赖，但在保证程序运行正确的情况下应该减少直接将函数作为依赖。
 
@@ -753,7 +753,7 @@ useEffect(() => {
 
 
 
-### 🤔为什么有时候在`useEffect`里拿到了旧的数据？(明我刚刚`setXxx`)
+### **🤔**为什么有时候在`useEffect`里拿到了旧的数据？(明我刚刚`setXxx`)
 
 在effect依赖无误的情况下，你可能会遇到这种情况：
 
@@ -781,7 +781,7 @@ useEffect(() => {
 
 如果以上问题你都没有，但还是拿到旧的值，那你很可能遗漏了一些依赖。
 
-### 🤔`useEffect`和`useLayuoutEffect`的相比浏览器渲染的确切执行时机到底是什么？
+### **🤔**`useEffect`和`useLayuoutEffect`的相比浏览器渲染的确切执行时机到底是什么？
 
 准确来说，这个问题其实并不在本文的讨论范围，但还是简单回答下这个问题。
 
@@ -800,7 +800,7 @@ useEffect(() => {
 
 
 
-### 🤔effect在什么时间点清理？
+### **🤔**effect在什么时间点清理？
 
 React官方文档中有解释：
 

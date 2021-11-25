@@ -267,12 +267,12 @@ const [state, dispatch] = useReducer(
 
 ### 11、类中关键字（较少用到）
 
-- - public
-  - private 类的外部不可用，继承也不行
-  - protected 类的外部不可用，继承可以
-  - readOnly 只读属性
-  - static 静态属性，不需要 new 即可调用
-  - abstract 抽象类，所有子类都必须要实现
+- public
+- private 类的外部不可用，继承也不行
+- protected 类的外部不可用，继承可以
+- readOnly 只读属性
+- static 静态属性，不需要 new 即可调用
+- abstract 抽象类，所有子类都必须要实现
 
 ### 12、工具类型 ultility types
 

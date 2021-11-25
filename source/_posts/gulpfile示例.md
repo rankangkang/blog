@@ -2,6 +2,7 @@
 title: gulpfile示例
 date: 2021-11-25 16:22:27
 tags:
+  - gulp
 ---
 
 ## 前言
@@ -10,7 +11,7 @@ tags:
 
 所以现在趁热打铁，在这里记录写过的`gulpfile`代码作为示例，以便日后查阅。
 
-你可以快速转到[示例](##示例)与[技巧](##技巧)查看。
+你可以快速转到[示例](#示例)与[技巧](#技巧)查看。
 
 ## 基础
 
@@ -167,8 +168,6 @@ gulp.task( name [, deps ], fn )
   
   exports.build = gulp.parallel(genDts, dealTsByTsc)
   ```
-
-  
 
 ## 示例
 

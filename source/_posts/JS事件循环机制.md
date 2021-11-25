@@ -1,11 +1,8 @@
 ---
 title: JS事件循环机制--event loop
 tags: 
-  - 事件循环
-  - 浏览器
-  - JS
+  - js
 date: 2021-06-30 22:08:30
-categories: JS
 ---
 
 

@@ -2,9 +2,8 @@
 
 title: react哲学：state与props
 tags: 
-  - React
+  - react
 date: 2021-06-30 
-categories: React
 ---
 
  react哲学之state与props
