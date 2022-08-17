@@ -13,10 +13,11 @@ menu:
   Github: https://github.com/cmkangkang
 
 footer:
+  year: 2022
   copyright: cmkk
   url: https://cmkangkang.github.io/
-  icp: 黔ICP备2021005921号-1
-  domain: https://beian.miit.gov.cn
+  # icp: 黔ICP备2021005921号-1
+  # domain: https://beian.miit.gov.cn
 
 gitalk:
   enable: true

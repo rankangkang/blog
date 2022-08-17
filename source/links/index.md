@@ -4,4 +4,10 @@ title: 我的链接
 
 * [GitHub](https://github.com/cmKangkang)
 
-* [个人网站](http://cmkangkang.top)
+* [gitee](http://cmkangkang.top)
+
+* [图虫](https://tuchong.com/26907548/)
+
+* [CNU视觉联盟](http://www.cnu.cc/users/1449994)
+
+<center><a href="mailto:cmkangkang@foxmail.com">mail me now!</a></center>
