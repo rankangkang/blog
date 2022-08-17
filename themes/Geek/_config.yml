@@ -21,8 +21,8 @@ footer:
 
 gitalk:
   enable: true
-  clientID: 6d20197ba953a4b4a688
-  clientSecret: fe5d9ec0315a32e40a86f055cc5c30804aaae82a
+  clientID: 325df251afefa3d37c8d
+  clientSecret: 2c6c9193012e9f8000ff38a0151e52b73df87a49
   repo: cmkangkang.github.io
   owner: cmKangkang
   admin: cmKangkang
