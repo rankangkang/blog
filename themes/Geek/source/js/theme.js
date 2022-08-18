@@ -39,7 +39,6 @@ if (getCookie("style") == "white") {
 
 upd.addEventListener('change', function() {
     const checked = upd.matches(':checked')
-    console.log('checked', checked)
     if (checked) {
         setCookie("style", "black")
         updateStyle();
