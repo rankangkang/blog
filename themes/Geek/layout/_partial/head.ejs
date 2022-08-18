@@ -9,14 +9,9 @@
     <% if (theme.favicon){ %>
         <%- favicon_tag(theme.favicon) %>
     <% } %>
-    <%- js('libs/jquery.min.js') %>
     <link rel="stylesheet" type="text/css" href="/highlight/styles/atom-one-dark.min.css" />
     <script type="text/javascript" src="/highlight/highlight.min.js"></script>
     <%- css('font/css/font-awesome.min.css') %>
     <%- css('css/style.css') %>
-    <% if (theme.gitalk.enable) { %> 
-        <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-        <script type="text/javascript" src="/libs/md5.js"></script>
-    <% } %> 
+    <%- js('js/index.js') %>
 </head>

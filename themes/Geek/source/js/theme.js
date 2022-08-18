@@ -1,4 +1,8 @@
-var web_style = $("#web_style").val();
+const footer = document.querySelector('#footer')
+const flink = document.querySelector('.flink')
+const ba = document.querySelector('.ba')
+const bodyx = document.querySelector('#bodyx')
+const upd = document.querySelector('#update_style')
 
 function setCookie(key, value) {
     localStorage.setItem(key, value);
@@ -11,38 +15,36 @@ function getCookie(key) {
 
 function updateStyle() {
     if (getCookie("style") == "white") {
-        $("#footer").attr("style", "color: #51525d;");
-        $(".flink").attr("style", "color: #51525d;");
-        $(".ba").attr("style", "color: #51525d;");
-        $("#bodyx").attr("class", "bg_while");
-        $("#update_style").attr('checked', false);
+        footer.setAttribute('style', "color: #51525d;")
+        flink.setAttribute('style', "color: #51525d;")
+        ba.setAttribute('style', "color: #51525d;")
+        bodyx.setAttribute('class', "bg_white")
+        upd.setAttribute('checked', "false")
     } else {
-        $("#footer").attr("style", "");
-        $(".flink").attr("style", "");
-        $("#bodyx").attr("class", "");
-        $(".ba").attr("style", "");
-        $("#update_style").attr('checked', true);
+        footer.removeAttribute('style')
+        flink.removeAttribute('style')
+        ba.removeAttribute('style')
+        bodyx.classList.remove('bg_white')
+        upd.setAttribute('checked', "true")
     }
 }
 
-if (getCookie("style") == null) {
-    setCookie("style", web_style)
-    updateStyle();
-} else if (getCookie("style") == "white") {
+if (getCookie("style") == "white") {
     setCookie("style", "white")
     updateStyle();
-} else if (getCookie("style") == "black") {
+} else {
     setCookie("style", "black")
     updateStyle();
 }
 
-$("#update_style").change(function() {
-    var style = $("#update_style").is(':checked');
-    if (style) {
+upd.addEventListener('change', function() {
+    const checked = upd.matches(':checked')
+    console.log('checked', checked)
+    if (checked) {
         setCookie("style", "black")
         updateStyle();
     } else {
         setCookie("style", "white")
         updateStyle();
     }
-});
+})

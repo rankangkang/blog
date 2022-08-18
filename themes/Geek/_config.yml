@@ -20,7 +20,7 @@ footer:
   # domain: https://beian.miit.gov.cn
 
 gitalk:
-  enable: true
+  enable: false
   clientID: 325df251afefa3d37c8d
   clientSecret: 2c6c9193012e9f8000ff38a0151e52b73df87a49
   repo: cmkangkang.github.io

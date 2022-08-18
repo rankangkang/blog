@@ -6,7 +6,7 @@
     >
     <a class="flink" href="<%= theme.footer.domain %>"
       ><%= theme.footer.icp %></a
-    >.
+    >
     <label
       class="el-switch el-switch-green el-switch-sm"
       style="vertical-align: sub"
@@ -16,15 +16,5 @@
     </label>
   </p>
 </div>
-
-<% if (theme.gitalk.enable) { %>
-    <input type="hidden" id="web_style" value="<%= theme.style %>" />
-    <input type="hidden" id="clientID" value="<%= theme.gitalk.clientID %>" />
-    <input type="hidden" id="clientSecret" value="<%= theme.gitalk.clientSecret %>" />
-    <input type="hidden" id="repo" value="<%= theme.gitalk.repo %>" />
-    <input type="hidden" id="owner" value="<%= theme.gitalk.owner %>" />
-    <input type="hidden" id="admin" value="<%= theme.gitalk.admin %>" />
-    <%- js('js/gitalk.js') %>
-<% } %>
 <%- js('highlight/index.js') %>
 <%- js('js/theme.js') %>
