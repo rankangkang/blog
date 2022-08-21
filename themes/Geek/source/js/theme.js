@@ -15,17 +15,17 @@ function getCookie(key) {
 
 function updateStyle() {
     if (getCookie("style") == "white") {
-        footer.setAttribute('style', "color: #51525d;")
-        flink.setAttribute('style', "color: #51525d;")
-        ba.setAttribute('style', "color: #51525d;")
-        bodyx.setAttribute('class', "bg_white")
-        upd.setAttribute('checked', "false")
+        footer?.setAttribute('style', "color: #51525d;")
+        flink?.setAttribute('style', "color: #51525d;")
+        ba?.setAttribute('style', "color: #51525d;")
+        bodyx?.setAttribute('class', "bg_white")
+        upd?.setAttribute('checked', "false")
     } else {
-        footer.removeAttribute('style')
-        flink.removeAttribute('style')
-        ba.removeAttribute('style')
-        bodyx.classList.remove('bg_white')
-        upd.setAttribute('checked', "true")
+        footer?.removeAttribute('style')
+        flink?.removeAttribute('style')
+        ba?.removeAttribute('style')
+        bodyx?.classList.remove('bg_white')
+        upd?.setAttribute('checked', "true")
     }
 }
 
